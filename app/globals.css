@@ -1,0 +1,285 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to nature-inspired color palette with earth tones */
+  --background: #ffffff; /* Clean white background */
+  --foreground: #475569; /* Deep slate text */
+  --card: #f1f5f9; /* Soft gray card background */
+  --card-foreground: #059669; /* Emerald text on cards */
+  --popover: #ffffff; /* White popover background */
+  --popover-foreground: #475569; /* Slate text on popovers */
+  --primary: #059669; /* Emerald primary */
+  --primary-foreground: #ffffff; /* White text on primary */
+  --secondary: #10b981; /* Bright emerald secondary */
+  --secondary-foreground: #ffffff; /* White text on secondary */
+  --muted: #f1f5f9; /* Soft gray muted */
+  --muted-foreground: #64748b; /* Medium slate text */
+  --accent: #10b981; /* Bright emerald accent */
+  --accent-foreground: #ffffff; /* White text on accent */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e5e7eb; /* Light gray border */
+  --input: #f1f5f9; /* Soft gray input background */
+  --ring: rgba(5, 150, 105, 0.5); /* Emerald focus ring */
+  --chart-1: #059669;
+  --chart-2: #10b981;
+  --chart-3: #f59e0b;
+  --chart-4: #dc2626;
+  --chart-5: #374151;
+  --radius: 0.5rem;
+  --sidebar: #f1f5f9;
+  --sidebar-foreground: #475569;
+  --sidebar-primary: #059669;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #10b981;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: rgba(5, 150, 105, 0.5);
+
+  /* Added nature-themed custom colors */
+  --nature-emerald: #059669;
+  --nature-emerald-light: #10b981;
+  --nature-sage: #84cc16;
+  --nature-earth: #a3a3a3;
+  --nature-sky: #e0f2fe;
+  --nature-glass: rgba(241, 245, 249, 0.8);
+}
+
+.dark {
+  /* Updated dark mode to maintain nature theme with darker earth tones */
+  --background: #0f172a; /* Dark slate background */
+  --foreground: #f1f5f9; /* Light text */
+  --card: #1e293b; /* Dark card background */
+  --card-foreground: #10b981; /* Bright emerald text */
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+  --primary: #10b981;
+  --primary-foreground: #0f172a;
+  --secondary: #059669;
+  --secondary-foreground: #ffffff;
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --accent: #10b981;
+  --accent-foreground: #0f172a;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #334155;
+  --input: #1e293b;
+  --ring: rgba(16, 185, 129, 0.5);
+  --chart-1: #10b981;
+  --chart-2: #059669;
+  --chart-3: #f59e0b;
+  --chart-4: #dc2626;
+  --chart-5: #f1f5f9;
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #0f172a;
+  --sidebar-accent: #059669;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #334155;
+  --sidebar-ring: rgba(16, 185, 129, 0.5);
+
+  --nature-glass: rgba(30, 41, 59, 0.8);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Updated background to nature-inspired gradients */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(5, 150, 105, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(132, 204, 22, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+    animation: nature-breathe 12s ease-in-out infinite alternate;
+  }
+  /* Renamed animation to nature-breathe for organic feel */
+  @keyframes nature-breathe {
+    0% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 0.4;
+    }
+  }
+}
+
+@layer utilities {
+  /* Updated utility classes for nature theme */
+  .text-nature-emerald {
+    color: var(--nature-emerald);
+  }
+  .text-nature-emerald-light {
+    color: var(--nature-emerald-light);
+  }
+  .text-nature-sage {
+    color: var(--nature-sage);
+  }
+  .bg-nature-glass {
+    background-color: var(--nature-glass);
+  }
+  .border-nature-emerald {
+    border-color: var(--nature-emerald);
+  }
+  .border-nature-emerald-light {
+    border-color: var(--nature-emerald-light);
+  }
+  .border-nature-sage {
+    border-color: var(--nature-sage);
+  }
+
+  .glow-emerald {
+    box-shadow: 0 0 20px rgba(5, 150, 105, 0.3);
+  }
+
+  .glow-sage {
+    box-shadow: 0 0 20px rgba(132, 204, 22, 0.2);
+  }
+
+  /* Updated gradient text utilities with proper fallback colors */
+  .gradient-text-primary {
+    background: linear-gradient(135deg, #059669, #10b981);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #059669; /* Fallback color */
+  }
+
+  .gradient-text-secondary {
+    background: linear-gradient(135deg, #10b981, #84cc16);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #10b981; /* Fallback color */
+  }
+
+  .gradient-text-hero {
+    background: linear-gradient(135deg, #475569, #059669, #10b981);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #475569; /* Fallback color */
+  }
+
+  /* Added button gradient utilities with proper contrast and !important to override any conflicting styles */
+  .btn-gradient-primary {
+    background: linear-gradient(135deg, #059669, #10b981) !important;
+    color: white !important;
+    border: none !important;
+  }
+
+  .btn-gradient-primary:hover {
+    background: linear-gradient(135deg, #047857, #059669) !important;
+  }
+
+  /* Added specific button class for guaranteed contrast */
+  .nexus-primary-button {
+    background: #059669 !important;
+    background-image: linear-gradient(135deg, #059669, #10b981) !important;
+    color: #ffffff !important;
+    border: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1.5rem 2rem !important;
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    border-radius: 0.375rem !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+  }
+
+  .nexus-primary-button:hover {
+    background: #047857 !important;
+    background-image: linear-gradient(135deg, #047857, #059669) !important;
+    opacity: 0.9 !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* Added floating animation for 3D elements */
+  .float-gentle {
+    animation: float-gentle 6s ease-in-out infinite;
+  }
+
+  @keyframes float-gentle {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(2deg);
+    }
+  }
+
+  .float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(-2deg);
+    }
+  }
+}
